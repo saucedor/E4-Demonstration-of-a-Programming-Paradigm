@@ -17,7 +17,7 @@ This problem was chosen because:
 
 ## Context and Usefulness
 
-Game of Life is not only a mathematical curiosity—it’s a foundational concept in complexity science, simulation of populations, and distributed systems. A fast, parallel implementation makes it viable for real-times visualization and large-scale experimentation.
+Game of Life is not only a mathematical curiosity it’s a foundational concept in complexity science, simulation of populations, and distributed systems. A fast, parallel implementation makes it viable for real-times visualization and large-scale experimentation.
 
 ---
 
