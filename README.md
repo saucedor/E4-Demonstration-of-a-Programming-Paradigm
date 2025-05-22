@@ -5,12 +5,12 @@
 
 ## Description
 
-This project implements **Game of Life** using the **parallel programming paradigm**, specifically via **OpenMP** in C++. The simulation models cellular automata on a square matrix where cells live, die, or reproduce according to defined rules. It is a classic example of data-parallel processing, where each cell evolves independently based on its neighbors.
+This project implements **Game of Life** using the **parallel programming paradigm**, specifically via **OpenMp** in C++. The simulation models cellular automata on a square matrix where cells live, die, or reproduce according to defined rules. It is a classic example of data-parallel processing, where each cell evolves independently based on its neighbors.
 
 This problem was chosen because:
 
 - It is a simple yet powerful example of how massive parallelism can be applied to a computational simulation.
-- It maps naturally to grid-based processing, making it great to learn and use OpenMP.
+- It maps naturally to grid-based processing, making it great to learn and use openMP.
 - It allows for performance benchmarking between sequential and parallel paradigms.
 
 ---
@@ -34,9 +34,224 @@ Each cell in the matrix is either **alive ('X')** or **dead ('.')**. At each gen
 
 ### Parallel Paradigm Use
 
-- The evolution of each cell depends only on its immediate neighbors, enabling **data parallelism**.
+- The evolution of each cell depends only on its immediate neighbors, enabling data parallelism
 - OpenMP's `#pragma omp parallel for collapse(2)` is used to parallelize the two-level nested loop that processes the grid.
 - Threads process rows and columns simultaneously, reducing computation time significantly.
 
 ### Diagram
+
+![Diagrama del modelo paralelo](./diagrama.png)
+
+## Implementation
+
+- Language: **C++**
+- Parallelization library: **OpenMP**
+- User inputs matrix size and number of generations.
+- Matrix is initialized randomly with alive/dead cells.
+- Parallel region updates the grid across generations.
+
+Files:
+- `main.cpp`: Main program with simulation logic.
+- `README.md`: Documentation (this file).
+
+---
+
+## Tests
+
+The correctness of the implementation can be validated through:
+
+- Manual inspection of output across generations.
+- Use of controlled matrix input with known expected outputs.
+- Ensuring edge boundaries behave correctly (no segmentation faults or invalid access).
+- Execution with increasing matrix sizes (e.g., 10x10, 100x100) to validate stability.
+
+Example test setup:
+
+```bash
+g++ -fopenmp -O2 life_game_omp.cpp -o life_game_omp
+```
+
+```bash
+./life_game_omp.exe
+```
+
+```bash
+Input:
+Size of the Matrix: 10
+Number of Generations: 10
+```
+
+Expected:
+```bash
+Initial State:
+. . . . X . . . X X
+. . X . . X . X . X 
+. . X . . X X X X .
+. X X . . X X . . .
+. X . X . X . . . X 
+. X X X . . X X X .
+X X . . X X X . X .
+. . . . . . . X X .
+X . X X . . . X . X
+. X X . . . X . X X 
+-------------------------
+Gen 1:
+. . . . . . . . X X
+. . . X X X . . . X 
+. . X X X . . . X .
+. X . X . . . . X .
+X . . X . X . . X .
+. . . X . . . . X X
+X X . X X X . . . X
+X . X X X X . . . X
+. . X X . . X . . X 
+. X X X . . . X X X
+-------------------------
+Gen 2:
+. . . . X . . . X X
+. . X . . X . . . X 
+. . . . . X . . X X
+. X . . . . . X X X
+. . . X . . . X X . 
+X X . X . X . . X X
+X X . . . X . . . X
+X . . . . . X . X X
+. . . . . X X X . X
+. X . X . . . X X X
+-------------------------
+Gen 3:
+. . . . . . . . X X
+. . . . X X . . . .
+. . . . . . X X . .
+. . . . . . X . . . 
+X X . . X . X . . .
+X X . . . . X X . X
+. . X . X X X X . .
+X X . . . . . . . X
+. . . . . X . . . .
+. . . . . . . X . X 
+-------------------------
+Gen 4:
+. . . . . . . . . .
+. . . . . X X X X .
+. . . . . . X X . .
+. . . . . . X . . .
+X X . . . . X . . .
+X . X X X . . . X .
+. . X . . X . X . .
+. X . . X . . . . .
+. . . . . . . . X . 
+. . . . . . . . . .
+-------------------------
+Gen 5:
+. . . . . . X X . .
+. . . . . X . . X .
+. . . . . . . . X .
+. . . . . X X . . .
+X X X X . X . X . .
+X . X X X X X X . .
+. . X . . X . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . . 
+-------------------------
+Gen 6:
+. . . . . . X X . .
+. . . . . . X . X .
+. . . . . X X X . .
+. X X . X X X X . .
+X . . . . . . X . .
+X . . . . . . X . .
+. X X . . X . . . . 
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+-------------------------
+Gen 7:
+. . . . . . X X . .
+. . . . . . . . X . 
+. . . . X . . . X .
+. X . . X . . . X .
+X . . . . X . X X .
+X . . . . . X . . .
+. X . . . . . . . . 
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+-------------------------
+Gen 8:
+. . . . . . . X . . 
+. . . . . . . . X .
+. . . . . . . X X X
+. . . . X X . . X X
+X X . . . X X X X .
+X X . . . . X X . .
+. . . . . . . . . . 
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+-------------------------
+Gen 9:
+. . . . . . . . . . 
+. . . . . . . . . X
+. . . . . . . X . .
+. . . . X X . . . .
+X X . . X . . . . X
+X X . . . X . . X . 
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+-------------------------
+Gen 10:
+. . . . . . . . . . 
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . X X . . . .
+X X . . X . . . . .
+X X . . . . . . . . 
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+-------------------------
+
+```
+---
+
+## Analysis
+
+### Time Complexity
+
+Let `N` be the size of the matrix:
+
+- **Seqquential complexity**: O(N²) per generation (analyze every cell).
+- **Parallel complexity**: O(N² / T) where `T` is the number of threads.
+
+**Speedup** is ideally linear with the numbers of threads, although it is limited by:
+- Synchronization overhead.
+- Cache and memory bandwidth.
+
+### Possible Alternative Paradigms
+
+| Paradigm        | Applicability               | Tradeoffs                                      |
+|-----------------|-----------------------------|------------------------------------------------|
+| Functional      | Stateles transformations   | Poor cache locality and control flow overhead. |
+| Object-Oriented | Modeling cells as objects   | Simpler code reuse, but high memory overhead.  |
+| Event-Driven    | Trigger on state changes    | Complex to implement; hard to parallelize.     |
+
+The parallel paradigm is best suited due to its natural fit with matrix operations and large, independent data blocks.
+
+---
+
+## Conclusion
+
+This project demonstrates how **parallel programming** dramatically reduces computation time for problems with **independent data points**, such as Game of Life. OpenMP offers a simple and effective way to leverage modern multi-core processors with minimal code changes and helps me to understand in a easy way to implement openMP.
+
+##Bibliography 
+
+- Conway, J. H. (1970). *Game of Life*. Scientific American, 223(4), 4–7.  
+- OpenMP Architecture Review Board. (2018). *OpenMP Application Programming Interface Version 5.0*. https://www.openmp.org/specifications/   
+- Malik, D. S. (2011). *C++ Programming: Program Design Including Data Structures* (6th ed.). Cengage Learning.
+- Kowalski, M. (n.d.). *Parallel programming examples* [Source code]. GitHub. https://github.com/mateuszk098/parallel-programming-examples
 
