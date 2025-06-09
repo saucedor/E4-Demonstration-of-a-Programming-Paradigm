@@ -233,16 +233,23 @@ Let `N` be the size of the matrix:
 - Cache and memory bandwidth.
 
 ### Possible Alternative Paradigms
+## Other Possible Solutions: Alternative Paradigms
 
-| Paradigm        | Applicability               | Tradeoffs                                      |
-|-----------------|-----------------------------|------------------------------------------------|
-| Functional      | Stateles transformations   | Poor cache locality and control flow overhead. |
-| Object-Oriented | Modeling cells as objects   | Simpler code reuse, but high memory overhead.  |
-| Event-Driven    | Trigger on state changes    | Complex to implement; hard to parallelize.     |
+Below are other ways to implement the Game of Life, along with their applications and limitations:
 
-The parallel paradigm is best suited due to its natural fit with matrix operations and large, independent data blocks.
+| **Paradigm** | **Application** | **Advantages** | **Disadvantages** |
+|------------------------|---------------------------------------------------------------------------|--------------------------------------------------|---------------------------------------------------------------------|
+| **Functional** | Use pure functions to transform the array state without side effects. | More predictable and testable code. | Poor cache performance, higher control flow overhead. |
+| **Object-Oriented** | Model each cell as an object with attributes (state, neighbors). | Code reuse, encapsulation. | High memory consumption and low efficiency for large arrays. |
+| **Event-Driven** | Update cells only when a state change occurs (event-driven simulation). | Can be efficient if changes are few. | Dificult to implement correctly and almost impossible to parallelize. |
 
----
+### Why was the **parallel** paradigm chosen?
+
+The parallel approach is best suited for this problem because:
+
+- It works on large matrices, where each cell can be processed independently.
+- Parallelization (using OpenMP) allows iterations to be divided by rows or blocks.
+- It maximizes the use of multiple CPU cores, significantly reducing execution time.
 
 ## Conclusion
 
