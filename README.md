@@ -40,7 +40,8 @@ Each cell in the matrix is either **alive ('X')** or **dead ('.')**. At each gen
 
 ### Diagram
 In response to feedback: "Improve the diagram, as it is not showing how the program works."
-![Diagrama del modelo paralelo](./Diagram (2).png)
+
+![Diagrama del modelo paralelo](./Diagram(2).png)
 
 ## Implementation
 
