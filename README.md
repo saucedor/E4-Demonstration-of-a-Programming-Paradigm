@@ -233,7 +233,7 @@ Let `N` be the size of the matrix:
 - Cache and memory bandwidth.
 
 ### Possible Alternative Paradigms
-In response to feedback provided: "Improve the documentation for the other possible solutions, Improve the diagram, as it is not showing how the program works."
+In response to feedback provided: "Improve the documentation for the other possible solutions."
 
 ## Other Possible Solutions: Alternative Paradigms
 
