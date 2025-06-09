@@ -220,6 +220,83 @@ X X . . . . . . . .
 ```
 ---
 
+## More Tests!!
+In response of feedback: Also add more tests, perhaps not the full sequence but the initial conditions and the expected final matrix. 
+
+```bash
+Size of the Matrix: 5
+Number of Generations: 5
+```
+
+```bash
+Initial State:
+. . . X . 
+X X . . . 
+X X . . . 
+X X X . . 
+X . X . . 
+-------------------------
+Gen 5:
+. . . . .
+. X X . . 
+X . . X .
+. X X . .
+. . . . .
+-------------------------
+```
+
+```bash
+Size of the Matrix: 20
+Number of Generations: 20
+```
+
+```bash
+Initial State:
+. X X . . X . . X X . X X . . . . . X .
+. X . X X . . X X . X X X X X . . X . X
+. . X X . X X X . . . . X X X . X X X X
+. X X . X X . X . X . X X . . X X X . .
+. . X . . X . X X . X X . X . X X X X .
+. . X X . . . X X . . . . . . . . X . X
+X . X . . X . . X . X X X . . X X X X .
+. . X X X X . . . X . X X . X . . . X .
+. . X . X . . . . . . . . X . . X . X X
+. . X . X . X X . . X X . X . . . . . X
+X X . . X . . . . . . . . . . . . . . X
+. X X . X . X . . . . . . . . X X . X X
+. . . X . X . X . . . . . X . . X X X X
+X X X X . . X X . X X . X X . X . . . .
+. X . . . X X X . X . . X X . . X . X X 
+. X . . X . X X X X X . X . X . . X . .
+. . X X X . . X . X X X X . . X . . . X
+. . X X X . . X X X . . X . X . X . . .
+. X X . . . . . X . . X X . X . . . . .
+X . . X . . X . . . X X X . X X X . . .
+-------------------------
+Gen 20:
+. . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . X . . . . . . .
+. . . . . . . . . . X X . X X . . . . .
+. . . . . . X . . . X X . X X . . . . .
+. . . . . . X . . . . . . . . . . . . .
+. . . . . . X . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . X X . . . . . . . .
+. . . . . . . . . X . . X . . . . . . .
+. . X . . . . . . . X X X . . . . . . .
+. . X . . . . . . . . X X . . . . . . .
+. . X . . . . . . . . X X . . . . . . .
+. . . . . . . . X X X . X . . . . . . .
+. . . . . . . . X X . . X X X . . . X X
+X X . . X X . X X . . . . . . . . . X X
+X X X X . . . X . . . . . . . . . . . .
+. . X . . . X X . X . . . . . . . . . .
+. . . . . . X . X X . . . . . . . . . .
+. . . X X X . X X . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . .
+-------------------------
+```
+
 ## Analysis
 
 ### Time Complexity
