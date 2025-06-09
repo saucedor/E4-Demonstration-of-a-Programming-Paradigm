@@ -233,6 +233,8 @@ Let `N` be the size of the matrix:
 - Cache and memory bandwidth.
 
 ### Possible Alternative Paradigms
+In response to feedback provided: "Improve the documentation for the other possible solutions, Improve the diagram, as it is not showing how the program works."
+
 ## Other Possible Solutions: Alternative Paradigms
 
 Below are other ways to implement the Game of Life, along with their applications and limitations:
